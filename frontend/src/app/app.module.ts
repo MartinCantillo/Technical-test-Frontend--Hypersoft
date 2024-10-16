@@ -10,13 +10,17 @@ import { CloginComponentComponent } from './components/clogin-component/clogin-c
 import { CregisterComponentComponent } from './components/cregister-component/cregister-component.component';
 import { RoleGuard } from './Services/auth-guard.service';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
+import { LogoutComponentComponent } from './components/logout-component/logout-component.component';
+import { CHomeComponent } from './components/c-home/c-home.component';
 
 
 const appRoutes: Routes = [
-  { path: 'saveProducto', component: CformSaveComponent, canActivate: [RoleGuard], data: { roles: ['Admin'] } },
+  { path: 'saveProducto',canActivate: [RoleGuard], data: { roles: ['Admin'] }, component: CformSaveComponent,  },
   { path: 'getAllProducto', component: ProductsComponentComponent, canActivate: [RoleGuard], data: { roles: ['User', 'Admin'] } },
   { path: 'registerUser', component: CregisterComponentComponent },
   { path: 'logginUser', component: CloginComponentComponent },
+  { path: 'cHome', component: CHomeComponent },
+  { path: 'logoutUser', component: LogoutComponentComponent },
   { path: '**', redirectTo: '/logginUser' }
 ];
 
@@ -27,7 +31,9 @@ const appRoutes: Routes = [
     CformSaveComponent,
     CloginComponentComponent,
     CregisterComponentComponent,
- 
+    LogoutComponentComponent,
+    CHomeComponent,
+
   ],
   imports: [
     BrowserModule,

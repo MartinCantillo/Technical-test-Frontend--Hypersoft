@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { jwtDecode } from "jwt-decode";
+import { Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -35,14 +36,11 @@ export class AuthServiceService {
     return roles.some(role => userRoles.includes(role));
   }
 
-  isAuthenticated(): boolean {
-    const token = this.getToken();
-    if (!token) return false;
-
-    const decodedToken: any = jwtDecode(token);
-    const currentTime = Date.now() / 1000;
-    return decodedToken.exp > currentTime;
+  isAuthenticated(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    return of(!!token);
   }
+
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
