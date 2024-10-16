@@ -14,7 +14,6 @@
         <th>Name</th>
         <th>price</th>
         <th>quantity</th>
-        <th>Comments</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -26,7 +25,7 @@
         <td>{{ item.quantity }}</td>
         <td>
           <button type="button" class="btn btn-dark"  style="margin-right: 10px">Edit</button>
-          <button type="button" class="btn btn-secondary" >Delete</button>
+          <button type="button" class="btn btn-secondary" (click)="onDelete(item.id)" >Delete</button>
         </td>
       </tr>
     </tbody>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Products } from 'src/app/models/Products';
 import { GetAllProductsService } from 'src/app/Services/get-all-products.service';
 
@@ -10,7 +11,7 @@ import { GetAllProductsService } from 'src/app/Services/get-all-products.service
 export class ProductsComponentComponent {
   product: Products = new Products();
   products: Products[] = [];
-  constructor(private productService: GetAllProductsService) { this.loadProducts() }
+  constructor(private productService: GetAllProductsService, private router: Router) { this.loadProducts() }
 
   loadProducts() {
     this.productService.GetAll().subscribe(
@@ -18,5 +19,23 @@ export class ProductsComponentComponent {
         this.products = data;
       }
     )
+  }
+  onDelete(id: number) {
+    if (confirm('¿Are you sure?')) {
+      this.productService.Delete(id).subscribe({
+        next: () => {
+          console.log('Contact deleted successfully');
+          this.loadProducts();
+        },
+
+        error: (error) => {
+          console.log(error);
+        },
+      }
+      );
+
+
+    }
+
   }
 }
