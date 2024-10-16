@@ -10,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: 'saveProducto', component: CformSaveComponent },
-
+  { path: 'getAllProducto', component: ProductsComponentComponent },
   { path: '**', redirectTo: '/home' }
 ];
 @NgModule({
