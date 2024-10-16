@@ -1,0 +1,25 @@
+<br>
+<br>
+<h1>Register user Form</h1>
+<br>
+
+<form #UserForm="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="user_username">Username:</label>
+    <input type="text" id="username" name="UserUsername" [(ngModel)]="user.username" required>
+  </div>
+  <div>
+    <label for="user_password">Password:</label>
+    <input type="text" id="password" name="UserPassword" [(ngModel)]="user.password" required>
+  </div>
+
+  <div>
+    <label for="user_role">Role:</label>
+    <input type="text" id="role" name="UserRole" [(ngModel)]="user.role" required>
+  </div>
+
+
+  <div class="center-button">
+    <button type="submit">Submit</button>
+  </div>
+</form>
