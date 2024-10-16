@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CloginComponentComponent } from './components/clogin-component/clogin-component.component';
 import { CregisterComponentComponent } from './components/cregister-component/cregister-component.component';
 import { RoleGuard } from './Services/auth-guard.service';
+import { AuthInterceptorService } from './Services/auth-interceptor.service';
 
 
 const appRoutes: Routes = [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     ProductsComponentComponent,
     CformSaveComponent,
     CloginComponentComponent,
-    CregisterComponentComponent
+    CregisterComponentComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
