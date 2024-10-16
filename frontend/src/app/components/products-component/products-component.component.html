@@ -24,7 +24,7 @@
         <td>{{ item.price }}</td>
         <td>{{ item.quantity }}</td>
         <td>
-          <button type="button" class="btn btn-dark"  style="margin-right: 10px">Edit</button>
+          <button type="button" class="btn btn-dark"  style="margin-right: 10px" (click)="update(item)">Edit</button>
           <button type="button" class="btn btn-secondary" (click)="onDelete(item.id)" >Delete</button>
         </td>
       </tr>

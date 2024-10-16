@@ -20,6 +20,10 @@ export class ProductsComponentComponent {
       }
     )
   }
+  update(producto: Products) {
+    this.productService.prdt = producto;
+    this.router.navigate(['/cEdit']);
+  }
   onDelete(id: number) {
     if (confirm('¿Are you sure?')) {
       this.productService.Delete(id).subscribe({
@@ -30,6 +34,7 @@ export class ProductsComponentComponent {
 
         error: (error) => {
           console.log(error);
+          alert("you dont have access")
         },
       }
       );

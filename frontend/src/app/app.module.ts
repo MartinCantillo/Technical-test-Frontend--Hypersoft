@@ -12,6 +12,7 @@ import { RoleGuard } from './Services/auth-guard.service';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { LogoutComponentComponent } from './components/logout-component/logout-component.component';
 import { CHomeComponent } from './components/c-home/c-home.component';
+import { CEditComponent } from './components/c-edit/c-edit.component';
 
 
 const appRoutes: Routes = [
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'registerUser', component: CregisterComponentComponent },
   { path: 'logginUser', component: CloginComponentComponent },
   { path: 'cHome', component: CHomeComponent },
+  { path: 'cEdit', component: CEditComponent, canActivate: [RoleGuard], data: { roles: ['Admin'] }  },
   { path: 'logoutUser', component: LogoutComponentComponent },
   { path: '**', redirectTo: '/logginUser' }
 ];
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     CregisterComponentComponent,
     LogoutComponentComponent,
     CHomeComponent,
+    CEditComponent,
 
   ],
   imports: [
